@@ -6,7 +6,6 @@ use App\News;
 use Illuminate\Http\Request;
 use App\Variant;
 use App\VariantValue;
-use Illuminate\Support\Facades\Input;
 
 class IndexController extends Controller
 {

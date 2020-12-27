@@ -13,8 +13,11 @@ use App\Variant;
 use App\VariantValue;
 use App\Image;
 use App\Video;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\View\View;
 
 class PortalController extends Controller
 {
@@ -32,6 +35,10 @@ class PortalController extends Controller
         return view('layout.portal', compact(['adddetails', 'sociallink','detail','categories', 'news']));
     }
 
+    /**
+     * @param Request $request
+     * @return Application|Factory|View
+     */
     public function index_portal(Request $request){
             $query = $request->input('search');
         $detail      = PersonalDetail::first();

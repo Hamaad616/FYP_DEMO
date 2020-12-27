@@ -42,9 +42,6 @@ Route::get('/user', 'PortalController@index_portal');
 Route::get('product_detail/{id}', 'PortalController@product_detail');
 
 
-
-
-
 /* Admin Portal Routes */
 Route::get('/admin_index', 'AdminController@admin_index');
 
@@ -68,11 +65,17 @@ Route::get('/all_news', 'NewsController@destroy');
 
 Route::get('/all_news', 'AdminController@all_news');
 
-Route::get('cart', 'CartController@index')->name('cart.index');
+Route::get('/cart', 'CartController@index')->name('cart.index');
 
-Route::Post('cart', 'CartController@store')->name('cart.store');
+Route::Post('/cart', 'CartController@store')->name('cart.store');
 
-Route::delete('cart/{id}', 'CartController@destroy')->name('cart.destroy');
+Route::delete('/cart/{id}', 'CartController@destroy')->name('cart.destroy');
+
+Route::post('/cart/switchToSaveForLater/{id}', 'CartController@SaveForLater')->name('cart.switchToSaveForLater');
+
+Route::delete('/cart/switchToSaveForLater/{id}', 'SaveForLaterController@destroy')->name('saveForLater.destroy');
+
+Route::post('/cart/switchToCart/{id}', 'SaveForLaterController@switchToCart')->name('saveForLater.switchToCart');
 
 Route::get('empty', function (){
     Cart::destroy();

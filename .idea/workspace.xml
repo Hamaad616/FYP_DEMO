@@ -4,12 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="373097e4-743b-4d8b-9482-5be8a71d142b" name="Default Changelist" comment="">
+    <list default="true" id="373097e4-743b-4d8b-9482-5be8a71d142b" name="Default Changelist" comment="style.css in /cart">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/SaveForLaterController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/cart/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/FYP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FYP.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PortalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PortalController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/cart/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/cart/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/portal/webportal.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/portal/webportal.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/portal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/portal.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/portal/cart.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/cart.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/portal/index_portal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/index_portal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/portal/product_detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/portal/product_detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,17 +151,20 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1m7ZfPIh5a2nwALrXiC78uiLYH4" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="SCSS" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/sass/compass" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/css/cart" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -162,6 +178,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\hamaa\FYP\public\css\cart" />
       <recent name="C:\Users\hamaa\FYP\resources\sass\compass" />
     </key>
   </component>
@@ -181,11 +198,18 @@
       <updated>1608846696441</updated>
       <workItem from="1608846700355" duration="359000" />
       <workItem from="1608847090773" duration="5556000" />
-      <workItem from="1608852754058" duration="67391000" />
+      <workItem from="1608852754058" duration="100405000" />
+      <workItem from="1609098026438" duration="517000" />
+      <workItem from="1609098671070" duration="134000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="style.css in /cart" />
+    <option name="LAST_COMMIT_MESSAGE" value="style.css in /cart" />
   </component>
 </project>

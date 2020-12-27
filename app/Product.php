@@ -23,7 +23,7 @@ class Product extends Model
 
     public function currentPrice(): string
     {
-		    return number_format($this->price/100 , 2, '.', ',' );
+		    return number_format($this->price/100 , 2, '.', ',');
     }
 
     public function get_category()

@@ -7,15 +7,7 @@
      </div>
  @endif
 @section('content')
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
-
-
-
 <!--Start Product Details area  -->
-
                 <div class="product-detail-area pt-90">
                     <div class="container">
                         <div class="row">
@@ -44,7 +36,7 @@
                                 <div class="product-detail">
                                     <div class="product-title">
                                         <h4 style="font-size: 22px;">{{$product->product_name}} </h4><br>
-                                        <h2>{{($product->currentPrice())}} US$</h2><br>
+                                        <h2>{{($product->price)}} US$</h2><br>
                                         <span >{{$product->get_category['article']}}-{{$product->id}}</span>
                                     </div>
                                     <h3><strong>Description</strong></h3>
@@ -58,7 +50,7 @@
                                             {{--                                                                        </div>--}}
                                             <input type="hidden" name="id" value="{{$product->id}}">
                                             <input type="hidden" name="name" value="{{$product->product_name}}">
-                                            <input type="hidden" name="price" value="{{$product->currentPrice()}}">
+                                            <input type="hidden" name="price" value="{{$product->price}}">
                                             <button class="single-add-to-cart-button" type="submit">Add to cart</button>
                                         </form>
                                     </div>
@@ -264,7 +256,7 @@
 {{--                                                                            <input type="number" id="french-hens" value="3">--}}
 {{--                                                                        </div>--}}
                                                                          <input type="hidden" name="id" value="{{$product->id}}">
-                                                                         <input type="hidden" name="name" value="{{$product->name}}">
+                                                                         <input type="hidden" name="name" value="{{$product->product_name}}">
                                                                          <input type="hidden" name="price" value="{{$product->price}}">
                                                                         <button class="single-add-to-cart-button" type="submit">Add to cart</button>
                                                                     </form>
