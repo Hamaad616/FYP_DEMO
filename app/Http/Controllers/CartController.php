@@ -49,7 +49,7 @@ class CartController extends Controller
         $products = Product::all();
         $images = Image::all();
         $sociallink =SocialLink::all();
-        return view('user.cart', compact(['images','sociallink','detail','categories','products', 'news']));
+        return view('portal.cart', compact(['images','sociallink','detail','categories','products', 'news']));
     }
     /**
      * Show the form for creating a new resource.

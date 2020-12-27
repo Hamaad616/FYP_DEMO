@@ -6,34 +6,7 @@
     <title>Croydon</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <style>
 
-        .badge {
-            padding-left: 9px;
-            padding-right: 9px;
-            -webkit-border-radius: 9px;
-            -moz-border-radius: 9px;
-            border-radius: 9px;
-        }
-
-        .label-warning[href],
-        .badge-warning[href] {
-            background-color: #c67605;
-        }
-
-        #lblCartCount {
-            font-size: 12px;
-            background: white;
-            color: #fff;
-            padding: 0 5px;
-            vertical-align: top;
-        }
-
-    </style>
     <!-- Croydonicon
     ============================================ -->
     <link rel="shortcut icon" type="image/x-icon" href="portal/img/logo-icon.png">
@@ -51,7 +24,7 @@
     ============================================ -->
     <link rel="stylesheet" href="{{ asset('portal/css/font-awesome.min.css')}}">
 
-{{--    <link rel="stylesheet" href="{{ asset('css/algolia.css') }}">--}}
+    <link rel="stylesheet" href="{{ asset('css/algolia.css') }}">
 
     <!-- owl.carousel CSS
     ============================================ -->
@@ -89,9 +62,9 @@
 
     <!-- modernizr JS
     ============================================ -->
-
+    @yield('extra-css')
 </head>
-<body class="@yield('body-class', '')">
+<body>
 
 <!-- Load Facebook SDK for JavaScript -->
 <div id="fb-root"></div>
@@ -482,8 +455,6 @@
 
 
 
-
-
 <script type="text/javascript">
     jQuery(document).ready(function() {
         // executes when HTML-Document is loaded and DOM is ready
@@ -495,6 +466,6 @@
         });
     });
 </script>
-
+@yield('extra-js')
 </body>
 </html>
