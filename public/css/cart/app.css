@@ -381,6 +381,7 @@ form button[type=submit] {
 }
 
 .form-group {
+    margin-left: 10px;
   margin-bottom: 20px;
 }
 
@@ -392,6 +393,7 @@ form button[type=submit] {
   width: 100%;
   padding: 12px;
   font-size: 16px;
+    margin-left: 1px;
 }
 
 .alert {
@@ -1240,14 +1242,15 @@ footer {
 }
 
 h1.checkout-heading {
-  margin-top: 40px;
+  margin-top: 60px;
+    margin-left: 11px;
 }
 
 .checkout-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 30px;
-  margin: 40px auto 80px;
+  margin: 10px auto 80px;
 }
 
 .checkout-section .checkout-table-container {
@@ -1255,7 +1258,8 @@ h1.checkout-heading {
 }
 
 .checkout-section h2 {
-  margin-bottom: 28px;
+  margin-bottom: 22px;
+    margin-left: 8px;
 }
 
 .checkout-section .checkout-table-row {

@@ -47,7 +47,7 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <form method="post" action="{{ url('product', $product->id) }}" enctype="multipart/form-data"> 
+                                <form method="post" action="{{ url('product', $product->id) }}" enctype="multipart/form-data">
                                     <input type="hidden" name="_method" value="PUT">
                                     {{ csrf_field() }}
                                     <div class="form-body">
@@ -56,12 +56,12 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group" >
-                                                    
+
                                                     <label class="control-label">Product Name</label>
                                                     <input type="text" id="firstName" name="product_name" class="form-control" placeholder="Name" value="{{$product->product_name}}"> </div>
                                             </div>
                                             <!--/span-->
-                                            
+
                                             <!--/span-->
                                         </div>
                                         <!--/row-->
@@ -154,15 +154,15 @@
 
                                                                         <div id="listResults">
                                                                           <div class="col-xs-12">
-                                                                            <div class="col-xs-2 text-center"> 
+                                                                            <div class="col-xs-2 text-center">
                                                                             </div>
                                                                           </div>
                                                                           <div class="col-xs-12">
                                                                             <div class="icheck-material-grey">
-                                                                                <input type="checkbox" checked id="{{ strtolower($value->name)}}" value="{{ $value->id}}" name="{{strtolower($variant->name)}}s[]" />
+                                                                                <input type="checkbox" checked id="{{ strtolower($value->name)}}" value="{{ $value->id}}" name="{{strtolower($variant->name)}}" />
                                                                                 <label for="{{ strtolower($value->name)}}">{{ $value->name}}</label>
                                                                             </div><br>
-                                                                            
+
                                                                           </div>
                                                                         </div>
                                                                     </div>
@@ -233,7 +233,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                         
+
 
                                     <div class="form-actions m-t-40">
                                         <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Update</button>

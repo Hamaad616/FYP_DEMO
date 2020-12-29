@@ -6,10 +6,12 @@
     <title>Croydon</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- page css -->
+    <link href="{{ asset('dash/css/style.min.css')}}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ asset('dash/css/pages/login-register-lock.css')}}" rel="stylesheet">
+
     <!-- Croydonicon
     ============================================ -->
     <link rel="shortcut icon" type="image/x-icon" href="portal/img/logo-icon.png">
@@ -27,7 +29,7 @@
     ============================================ -->
     <link rel="stylesheet" href="{{ asset('portal/css/font-awesome.min.css')}}">
 
-{{--    <link rel="stylesheet" href="{{ asset('css/algolia.css') }}">--}}
+
 
     <!-- owl.carousel CSS
     ============================================ -->
@@ -61,7 +63,6 @@
     <!-- responsive CSS
     ============================================ -->
     <link rel="stylesheet" href="{{ asset('portal/css/responsive.css')}}">
-
 
     <!-- modernizr JS
     ============================================ -->
@@ -123,7 +124,7 @@
                     <div class="row">
                         <div class="col-md-3 col-sm-6 col-xs-12">
                             <div class="header-logo">
-                                <a href="{{ url('index_portal') }}"><img src="{{asset('portal/img/logo/1.png')}}" alt="Croydon"></a>
+                                <a href="{{ url('/') }}"><img src="{{asset('portal/img/logo/1.png')}}" alt="Croydon"></a>
                             </div>
                         </div>
                         <div class="col-md-3 hidden-sm hidden-xs col-sm-6 col-xs-12">
@@ -132,7 +133,9 @@
 
                                 </div>
                                 <div class="info-text">
+
                                     <h4>{{$detail->phone}}</h4>
+
                                     <p>We are open 24/7</p>
 
                                 </div>
@@ -152,7 +155,8 @@
                         <div class="col-md-3 col-sm-6 col-xs-12">
                             <div class="search-box">
                                 <img src="img/icon/search.png" alt="">
-                                <form action="/search">
+                                <form action="/search" method="POST">
+                                    {{ csrf_field() }}
                                     <input type="text" placeholder="Search..." name="search">
                                 </form>
                             </div>
@@ -164,36 +168,39 @@
                 <nav>
                     <div class="mainmenu">
                         <ul>
-                            <li><a href="{{ url('index_portal') }}">Home</a>
+                            <li><a href="{{ url('/') }}">Home</a>
 
                             </li>
                             <li><a href="{{ url('shop_grid') }}">Categories <span><img src="portal/img/icon/hot.png" alt=""></span></a>
                                 <ul class="submenu-mainmenu">
                                     @foreach($categories as $category)
-                                        <li><a  href="{{ url('shop_grid') }}"><i class="fa fa-circle"></i>{{$category->name}}<span><i class="fa fa-angle-right"></i></span></a>
+                                        <li><a  href="{{ url('shop_grid') }}"><i class="fa fa-circle"></i>{{$category->name}}<i class="fa fa-angle-right"></i><span></a>
                                         </li>
                                     @endforeach
                                 </ul>
                             </li>
 
+
                             <li><a href="{{ url('shop_grid') }}">New ARRIVIAL</a>
                             </li>
+
+
                             <li><a href="{{ url('contact') }}">Contact</a></li>
                             <li><a href="{{ url('video_show') }}">Video</a></li>
-                            <li>
-{{--                            <a href="{{ route('cart.index') }}">Cart--}}
-{{--                                    @if (Cart::instance('default')->count() > 0)--}}
-{{--                                        <span class="cart-count"><span>{{ Cart::instance('default')->count() }}</span></span>--}}
-{{--                                    @endif--}}
-{{--                                </a></li>--}}
+                            @if(Auth::User()->hasRole('admin'))
+                                <li><a href="{{ url('/admin_index') }}">Admin Panel</a></li>
+                            @endif
+                            @if(Auth::User()->hasRole('ceo'))
+                                <li><a href="{{ url('/CEO') }}">CEO Dashboard</a></li>
+                        @endif
 
-                            <li class="fas fa-shopping-cart" >
-                                <a href="{{ route('cart.index') }}" style="font-size: 25px"><span ID="lblCartCount" CssClass="badge badge-warning" >@if (Cart::instance('default')->count() > 0)
-                                            <span class="cart-count">{{ Cart::instance('default')->count() }}</span>
-                                        @endif</span>
-                                </a>
-                            </li>
-{{--                            <li><a href="{{ route('login') }}">Login</a></li>--}}
+
+                        <!-- <li><a href="{{ url('admin_index') }}">logout</a></li> -->
+
+                            <!-- <li><a href="#">Become a seller</a></li> -->
+
+{{--                            <li><a href="#">Become a seller</a></li>--}}
+
 
                             <li>
                                 <a href="#" >
@@ -201,26 +208,46 @@
                                 </a>
                             </li>
                             <li>
-                                @if(Auth::user()->hasRole('Admin'))
-                                <a href="{{url('admin_index')}}" >
-                                    Admin Panel
-                                </a>
-                                @endif
-                            </li>
-                            <li>
                                 <a  href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
+
                                 <form id = "logout-form" action="{{ route('logout') }}" method="POST">
                                     @csrf
                                 </form>
                             </li>
+
+                        </ul>
+
+
+
+
+                    <!-- <li>
+                                <a href="#" role="button" data-toggle="dropdown" >
+                                    {{ Auth::user()->name }}
+                        </a>
+
+                        <div class="main-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                        </form>
+                    </div>
+                </li>
+-->
+
+
+
                         </ul>
                     </div>
                 </nav>
             </div>
-
             <!-- Mobile Menu Area start -->
             <div class="mobile-menu-area">
                 <div class="container">
@@ -232,32 +259,21 @@
                                         <li><a href="{{ url('index_portal') }}">HOME</a>
 
                                         </li>
-                                        <li><a href="{{ url('customer_showproducts') }}">Categories</a>
+                                        <li><a href="{{ url('showproducts') }}">Categories</a>
                                             <ul>
-                                                <li><a href="{{ url('customer_showproducts') }}">Boxing Equipments</a></li>
-                                                <li><a href="{{ url('customer_showproducts') }}">Martial Arts</a></li>
-                                                <li><a href="{{ url('customer_showproducts') }}">Sports Wears</a></li>
-                                                <li><a href="{{ url('customer_showproducts') }}">Fitness</a></li>
-                                                <li><a href="{{ url('customer_showproducts') }}">bag</a></li>
+                                                <li><a href="{{ url('showproducts') }}">Boxing Equipments</a></li>
+                                                <li><a href="{{ url('showproducts') }}">Martial Arts</a></li>
+                                                <li><a href="{{ url('showproducts') }}">Sports Wears</a></li>
+                                                <li><a href="{{ url('showproducts') }}">Fitness</a></li>
+                                                <li><a href="{{ url('showproducts') }}">bag</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="#">New ARRIVIAL</a></li>
-                                     <li><a href="{{ url('cart') }}">My Account</a>
-                                        <li>
-                                            <a href="#" >
-                                                {{ Auth::user()->name }}
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a  href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}
-                                            </a>
-
-                                            <form id = "logout-form" action="{{ route('logout') }}" method="POST">
-                                                @csrf
-                                            </form>
-                                        </li>
+                                        <li><a href="{{ url('cart') }}">My Account</a>
+                                            <ul>
+                                                <li><a href="{{ url('contact') }}">Contact</a></li>
+                                                <li><a href="{{ url('video_show') }}">Video</a></li>
+                                            </ul>
 
 
                                     </ul>
@@ -271,19 +287,11 @@
         </header>
         <!-- header end -->
 
-        <!-- jQuery first, then Popper.js and Bootstrap JS. -->
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
         <!-- slider start -->
 
-                @yield('content')
+        @yield('content')
 
-                    <br><br><br><br><br>
+        <br><br><br><br><br>
 
         <!-- footer start -->
         <footer class="footer-area">
@@ -340,10 +348,10 @@
                             <div class="footer-widget">
                                 <h5>Company</h5>
                                 <ul>
-                                    <li><a href="{{url('/')}}"><i class="fa fa-circle"></i>Home</a></li>
-                                    <li><a href="{{url('customer_shop_grid')}}"><i class="fa fa-circle"></i>Categories</a></li>
-                                    <li><a href="{{url('customer_shop_grid')}}"><i class="fa fa-circle"></i>New Arrival</a></li>
-                                    <li><a href="{{url('customer_contact')}}"><i class="fa fa-circle"></i>Contact Us</a></li>
+                                    <li><a href="{{url('index_portal')}}"><i class="fa fa-circle"></i>Home</a></li>
+                                    <li><a href="{{url('shop_grid')}}"><i class="fa fa-circle"></i>Catogories</a></li>
+                                    <li><a href="{{url('shop_grid')}}"><i class="fa fa-circle"></i>New Arrival</a></li>
+                                    <li><a href="{{url('contact')}}"><i class="fa fa-circle"></i>Contact Us</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -367,7 +375,7 @@
                     <div class="row">
                         <div class="col-md-4 col-sm-6">
                             <div class="copyright">
-                                <p>Copyright @ 2020 <span><a href="{{url('index_portal')}}">Croydon</a></span>. All right reserved. </p>
+                                <p>Copyright @ 2019 <span><a href="#">Croydon</a></span>. All right reserved. </p>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6">
@@ -375,7 +383,7 @@
                                 <nav>
                                     <ul>
                                         <li><a href="{{url('index_portal')}}">Home</a></li>
-                                        <li><a href="{{url('contact')}}">Contact Us</a></li>
+                                        <li><a href="{{url('contact')}}">Contat Us</a></li>
                                         <li class="hidden-md hidden-xs"><a href="{{url('video_show')}}">Video</a></li>
                                         <!--<li><a href="#">Newsletter</a></li>-->
                                     </ul>
@@ -395,6 +403,7 @@
 
     </div>
 </div>
+
 
 
 <!-- END QUICKVIEW PRODUCT -->
@@ -454,10 +463,6 @@
 ============================================ -->
 <script src="{{ asset('portal/js/main.js')}}"></script>
 <script src="{{ asset('portal/assets/js/jquery-1.9.1.min.js')}}"></script>
-
-
-
-
 
 
 <script type="text/javascript">

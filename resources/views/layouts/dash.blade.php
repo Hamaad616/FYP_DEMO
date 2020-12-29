@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('dash/assets/images/favicon.png')}}">
     <title>Croydon PVT Limited</title>
     <!-- This invoice page  -->
-   
+
     <!-- This invoice page  -->
     <!-- Footable CSS -->
     <!-- page css -->
@@ -81,7 +81,7 @@
                         <!-- Logo text --><span>
                          <!-- dark Logo text -->
                          <img src="{{ asset('dash/assets/images/logo_2.png')}}" alt="homepage" class="dark-logo" width="134px" height="60px" style="margin-top: 11px"/>
-                         <!-- Light Logo text -->    
+                         <!-- Light Logo text -->
                          <img src="{{ asset('dash/assets/images/logo_2.png')}}" class="light-logo" alt="homepage" width="134px" height="60px" style="margin-top: 11px" /></span> </a>
                 </div>
                 <!-- ============================================================== -->
@@ -130,7 +130,7 @@
                                 <!- text->
                                 <a href="javascript:void(0)" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
                                 <!- text->
-                                
+
                                 <!- text->
                                 <div class="dropdown-divider"></div>
                                 <!- text->
@@ -164,14 +164,14 @@
                     <ul id="sidebarnav">
                         <li class="user-pro"> <a class=" waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><span class="hide-menu">{{ Auth::User()->name }}</span></a>
                         </li>
-                        @foreach (Auth::User()->roles as $role) 
-                        <li class="nav-small-cap"> Dashboard  
+                        @foreach (Auth::User()->roles as $role)
+                        <li class="nav-small-cap"> Dashboard
                                            {{ $role->name }}
                                     </li>
                                     @endforeach
 
 
-                        @if(Auth::User()->hasRole('ceo'))
+                        @if(Auth::User()->hasRole('CEO'))
                         <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-speedometer"></i><span class="hide-menu">Home <span class="badge badge-pill badge-cyan ml-auto">4</span></span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="{{ url('index_dash') }}">Home </a></li>
@@ -179,93 +179,93 @@
                             </ul>
                         </li>
                         @endif
-                        @if(Auth::User()->hasRole('ceo'))                         
+                        @if(Auth::User()->hasRole('CEO'))
                         <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-speedometer"></i><span class="hide-menu">Qualified Supplier</span></a>
                             <ul aria-expanded="false" class="collapse">
-                               
+
                                  <li><a href="{{ url('suppliers/create') }}">Add Qualified Suppliers</a></li>
-                                 <li><a href="{{ url('suppliers') }}">All Qualified Suppliers</a></li>   
-                                 
+                                 <li><a href="{{ url('suppliers') }}">All Qualified Suppliers</a></li>
+
                            </ul>
                         </li>
                         @endif
-                        @if(Auth::User()->hasRole('ceo'))
+                        @if(Auth::User()->hasRole('CEO'))
                          <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-speedometer"></i><span class="hide-menu">Employee Details</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                
+
                                  <li><a href="{{ url('employees') }}">Employee</a></li>
                                  <li><a href="{{ url('employees/create') }}">Add Employee</a></li>
-                                
+
                            </ul>
                         </li>
                      @endif
-                     @if(Auth::User()->hasRole('ceo'))
+                     @if(Auth::User()->hasRole('CEO'))
                                              <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-speedometer"></i><span class="hide-menu">Financial</span></a>
                             <ul aria-expanded="false" class="collapse">
-                            
+
                                 <li><a href="{{ url('inventory/create') }}">Add project </a></li>
                                 <li><a href="{{ url('inventory') }}">All project Sale </a></li>
-                            
+
                             </ul>
                         </li>
                         @endif
-                        @if(Auth::User()->hasRole('ceo'))
+                        @if(Auth::User()->hasRole('CEO'))
                           <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-speedometer"></i><span class="hide-menu">Users</span></a>
                             <ul aria-expanded="false" class="collapse">
-                             
-                                
+
+
                                 <li><a href="{{ url('users') }}">All Users  </a></li>
-                               
+
                             </ul>
                         </li>
                         @endif
-                        @if(Auth::User()->hasRole('ceo'))
+                        @if(Auth::User()->hasRole('CEO'))
                          <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-speedometer"></i><span class="hide-menu">Vendors</span></a>
                             <ul aria-expanded="false" class="collapse">
-                             
+
                                 <li><a href="{{ url('vendor/create') }}">Add Vendors </a></li>
                                 <li><a href="{{ url('vendor') }}">All Vendors  </a></li>
-                               
+
                             </ul>
                         </li>
                         @endif
-                        @if(Auth::User()->hasRole('ceo'))
+                        @if(Auth::User()->hasRole('CEO'))
                          <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-speedometer"></i><span class="hide-menu">Sales</span></a>
                             <ul aria-expanded="false" class="collapse">
-                             
+
                                 <li><a href="{{ url('sales/create') }}">Add Sales </a></li>
                                 <li><a href="{{ url('sales') }}">All Sales  </a></li>
                             </ul>
                         </li>
                         @endif
-                        @if(Auth::User()->hasRole('ceo'))
+                        @if(Auth::User()->hasRole('CEO'))
                          <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-speedometer"></i><span class="hide-menu">Purchases</span></a>
                             <ul aria-expanded="false" class="collapse">
-                             
+
                                 <li><a href="{{ url('purchase/create') }}">Add Purchases </a></li>
                                 <li><a href="{{ url('purchase') }}">All Purchases  </a></li>
-                               
+
                             </ul>
                         </li>
                         @endif
-                        @if(Auth::User()->hasRole('ceo'))
+                        @if(Auth::User()->hasRole('CEO'))
                          <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-speedometer"></i><span class="hide-menu">Roles</span></a>
                             <ul aria-expanded="false" class="collapse">
-                             
+
                                 <li><a href="{{ url('roles/create') }}">Add Roles </a></li>
                                 <li><a href="{{ url('add_employee_role') }}">Add Employee Role  </a></li>
                                 <li><a href="{{ url('roles') }}">All Role </a></li>
-                               
+
                             </ul>
                         </li>
                         @endif
                        <li> <a class="waves-effect waves-dark" href="{{route('logout')}}" aria-expanded="false"><i class="fa fa-circle-o text-success"></i><span class="hide-menu">Log Out</span></a></li>
-                       @if(Auth::User()->hasRole('ceo'))
+                       @if(Auth::User()->hasRole('CEO'))
                             <li> <a class="waves-effect waves-dark" href="{{url('admin_index')}}" aria-expanded="false"><i class="fa fa-circle-o text-success"></i><span class="hide-menu">Admin Panel</span></a></li>
                        @endif
-                       @if(Auth::User()->hasRole('ceo'))
-                        <li> <a class="waves-effect waves-dark" href="{{url('CEO_web')}}" aria-expanded="false"><i class="fa fa-circle-o text-success"></i><span class="hide-menu">  Web portal</span></a></li> 
-                        @endif                   
+                       @if(Auth::User()->hasRole('CEO'))
+                        <li> <a class="waves-effect waves-dark" href="{{url('CEO_web')}}" aria-expanded="false"><i class="fa fa-circle-o text-success"></i><span class="hide-menu">  Web portal</span></a></li>
+                        @endif
                    </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -322,7 +322,7 @@
     <script src="{{ asset('dash/js/dashboard1.js')}}"></script>
     <script src="{{ asset('dash/assets/node_modules/toast-master/js/jquery.toast.js')}}"></script>
     <script src="{{ asset('dash/assets/node_modules/sticky-kit-master/dist/sticky-kit.min.js')}}"></script>
-    
+
     <!--Custom JavaScript -->
     <script src="{{ asset('dash/js/ecom-dashboard.js')}}"></script>
     <script src="{{ asset('dash/js/pages/jasny-bootstrap.js')}}"></script>
@@ -349,7 +349,7 @@
 
 
 
-        
+
     <script>
      // Date Picker
     jQuery('.mydatepicker, #datepicker').datepicker();
@@ -414,7 +414,7 @@
     </script>
 
 <script type="text/javascript">
-    
+
     $('#example24').DataTable({
         dom: 'Bfrtip',
         buttons: [
@@ -429,9 +429,9 @@
         $(function() {
             $('[data-toggle="tooltip"]').tooltip()
         });
-        // ============================================================== 
-        // Login and Recover Password 
-        // ============================================================== 
+        // ==============================================================
+        // Login and Recover Password
+        // ==============================================================
         $('#to-recover').on("click", function() {
             $("#loginform").slideUp();
             $("#recoverform").fadeIn();
@@ -443,7 +443,7 @@
     $("#add_row").click(function(){b=i-1;
         $('#addr'+i).html($('#addr'+b).html()).find('td:first-child').html(i+1);
         $('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
-        i++; 
+        i++;
     });
     $("#delete_row").click(function(){
         if(i>1){
@@ -452,14 +452,14 @@
         }
         calc();
     });
-    
+
     $('#tab_logic tbody').on('keyup change',function(){
         calc();
     });
     $('#tax').on('keyup change',function(){
         calc_total();
     });
-    
+
 
 });
 
@@ -472,7 +472,7 @@ function calc()
             var qty = $(this).find('.qty').val();
             var price = $(this).find('.price').val();
             $(this).find('.total').val(qty*price);
-            
+
             calc_total();
         }
     });
@@ -496,7 +496,7 @@ function myFunction() {
   window.print();
 }
 </script>
-    
+
 </body>
 
 </html>

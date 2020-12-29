@@ -32,7 +32,7 @@ class PortalController extends Controller
         $detail     = PersonalDetail::all();
         $sociallink = SocialLink::all();
         $news = News::all();
-        return view('layout.portal', compact(['adddetails', 'sociallink','detail','categories', 'news']));
+        return view('layout.portal', compact(['sociallink','detail','categories', 'news']));
     }
 
     /**
@@ -41,6 +41,10 @@ class PortalController extends Controller
      */
     public function index_portal(Request $request){
             $query = $request->input('search');
+        $categories = Category::all();
+        $detail     = PersonalDetail::all();
+        $sociallink = SocialLink::all();
+        $news = News::all();
         $detail      = PersonalDetail::first();
         $adddetails  = PersonalDetail::all();
         $categories =  Category::all();
@@ -59,7 +63,7 @@ class PortalController extends Controller
        $sociallink = SocialLink::all();
        $news = News::all();
        $sliders = Slider::all();
-        return view('portal.index_portal', compact(['sliders','adddetails','new_arrivals','sociallink','features','sales','categories','detail','news']));
+        return view('portal.index_portal', compact(['sliders','category','adddetails','new_arrivals','sociallink','features','sales','categories','detail','news']));
 
     }
 

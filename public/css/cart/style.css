@@ -540,180 +540,180 @@ ul.sub-submenu-mainmenu {
     z-index: 9999;
 }
 
-/*!*----------------------------------------*!*/
-/*!*  4.  Slider CSS*/
-/*!*----------------------------------------*!*/
-/*.slider-wrap {*/
-/*    overflow: hidden;*/
-/*    position: relative;*/
-/*}*/
-/*.banner-content, .banner-content .container, .banner-content .row, .banner-content .col-lg-12, .banner-content .nivo_text, .banner-content .nivo_text-wrapper {*/
-/*    height: 100%;*/
-/*    margin: auto;*/
-/*}*/
-/*.banner-content .nivo_text {*/
-/*    display: table;*/
-/*    float: right;*/
-/*}*/
-/*.banner-content .nivo_text-wrapper {*/
-/*    display: table-cell;*/
-/*    vertical-align: middle;*/
-/*}*/
-/*.slider-content.slider-text-1 h2{*/
-/*    font-size: 18px;*/
-/*    color: #282828;*/
-/*    font-family: 'Poppins', sans-serif;*/
-/*    font-weight: 600;*/
-/*}*/
-/*.slider-content.slider-text-2 h1{*/
-/*    font-size: 50px;*/
-/*    color: #EC552C;*/
-/*    font-family: 'Poppins', sans-serif;*/
-/*    margin: 0px;*/
-/*    font-weight: 600;*/
-/*}*/
-/*.slider-content.slider-text-3 p {*/
-/*    color: #282828;*/
-/*    font-family: "montserratlight";*/
-/*    font-size: 14px;*/
-/*    line-height: 20px;*/
-/*    padding-right: 50px;*/
-/*}*/
-/*.slider-content.slider-text-4{*/
-/*    margin-top: 20px;*/
-/*}*/
-/*.banner-image-wrap{*/
-/*    background-image: url(img/slider/1.jpg);*/
-/*    background-repeat: no-repeat;*/
-/*    background-position: center center;*/
-/*    background-size: cover;*/
-/*    position: relative;*/
-/*}*/
-/*.banner-image-wrap.fixed-background{*/
-/*    background-image: url(img/slider/3.jpg);*/
-/*    background-repeat: no-repeat;*/
-/*    background-position: center center;*/
-/*    background-size: cover;*/
-/*    position: relative;*/
-/*}*/
-/*.banner-image-wrap .banner-text{*/
-/*    left: 45%;*/
-/*    position: absolute;*/
-/*    top: 25%;*/
-/*    display: table;*/
-/*    height: 100%;*/
-/*}*/
-/*.banner-text-wrapper{*/
-/*    display: table-cell;*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*}*/
-/*.banner-content.static-text {*/
-/*    left: 0;*/
-/*    position: absolute;*/
-/*    right: 0;*/
-/*    text-align: center;*/
-/*    top: 0;*/
-/*    z-index: 9;*/
-/*}*/
-/*.nivo-img img {*/
-/*    display: inline-block;*/
-/*    width: 62%;*/
-/*    left: 5%;*/
-/*    max-width: none;*/
-/*}*/
-/*.nivo_text {*/
-/*    left: 45%;*/
-/*    position: absolute;*/
-/*}*/
-/*.overlay{position: relative;}*/
-/*.overlay:after{*/
-/*    background: #170804;*/
-/*    content: "";*/
-/*    height: 100%;*/
-/*    left: 0;*/
-/*    position: absolute;*/
-/*    top: 0;*/
-/*    width: 100%;*/
-/*    opacity: .6;*/
-/*    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)"*/
-/*}*/
-/*#video-bg {width: 100%;}*/
-/*.video-wrapper, .video-banner {*/
-/*    height: 570px;*/
-/*    overflow: hidden;*/
-/*    position: relative;*/
-/*}*/
-/*.animated-background .slider-content.slider-text-1 h2, .animated-background .slider-content.slider-text-2 h1{color: #fff}*/
-/*.fixed-background {*/
-/*    background: rgba(0, 0, 0, 0) url("img/slider/1.jpg") no-repeat fixed center top / cover ;*/
-/*    padding: 250px 0;*/
-/*}*/
-/*.slider-button {*/
-/*    background: #282828 none repeat scroll 0 0;*/
-/*    border-bottom: medium none;*/
-/*    border-radius: 20px;*/
-/*    color: #ffffff;*/
-/*    display: block;*/
-/*    font-family: 'Poppins', sans-serif;*/
-/*    font-size: 12px;*/
-/*    font-weight: 600;*/
-/*    padding: 8px 20px 6px;*/
-/*    text-transform: uppercase;*/
-/*    display: inline-block;*/
-/*    -webkit-transition: all 0.5s ease 0s;*/
-/*    transition: all 0.5s ease 0s;*/
-/*}*/
-/*.section-button {*/
-/*    background: #ec552c none repeat scroll 0 0;*/
-/*    border-bottom: medium none;*/
-/*    border-radius: 20px;*/
-/*    color: #ffffff;*/
-/*    display: inline-block;*/
-/*    font-family: "Montserrat",sans-serif;*/
-/*    font-size: 12.8px;*/
-/*    font-weight: 700;*/
-/*    padding: 7px 18px;*/
-/*    text-transform: uppercase;*/
-/*    border: none;*/
-/*    -webkit-transition: all 0.5s ease 0s;*/
-/*    transition: all 0.5s ease 0s;*/
-/*}*/
-/*.slider-button:hover {*/
-/*    color: #282828;*/
-/*    background: #EC552C;*/
-/*}*/
-/*.section-button:hover {*/
-/*    color: #282828;*/
-/*}*/
-/*!*----------------------------------------*!*/
-/*!*  5.  Slider Bottom CSS*/
-/*!*----------------------------------------*!*/
-/*.slider-bottom-area{overflow: hidden}*/
-/*.slider-bottom-area .row{margin-left: -21px; margin-right: -21px}*/
-/*.slider-bottom-area .row .col-md-3{padding: 0 6px}*/
-/*.service-area .row .col-md-3{padding: 0 5px}*/
-/*.single-slider-bottom{position: relative;}*/
-/*.single-slider-info{*/
-/*    position: absolute;*/
-/*    top: 33%; */
-/*    left: 62%;*/
-/*    font-family: 'Poppins', sans-serif;*/
-/*    color: #282828;*/
-/*}*/
-/*.single-slider-info h4 {*/
-/*    font-size: 15px;*/
-/*    font-weight: 700;*/
-/*    line-height: 20px;*/
-/*    margin: 0;*/
-/*}*/
-/*.single-slider-info h2 {*/
-/*    color: #ec552c;*/
-/*    font-size: 30px;*/
-/*    font-weight: 700;*/
-/*    line-height: 30px;*/
-/*    margin: 0;*/
-/*}*/
+/*----------------------------------------*/
+/*  4.  Slider CSS
+/*----------------------------------------*/
+.slider-wrap {
+    overflow: hidden;
+    position: relative;
+}
+.banner-content, .banner-content .container, .banner-content .row, .banner-content .col-lg-12, .banner-content .nivo_text, .banner-content .nivo_text-wrapper {
+    height: 100%;
+    margin: auto;
+}
+.banner-content .nivo_text {
+    display: table;
+    float: right;
+}
+.banner-content .nivo_text-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+}
+.slider-content.slider-text-1 h2{
+    font-size: 18px;
+    color: #282828;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+.slider-content.slider-text-2 h1{
+    font-size: 50px;
+    color: #EC552C;
+    font-family: 'Poppins', sans-serif;
+    margin: 0px;
+    font-weight: 600;
+}
+.slider-content.slider-text-3 p {
+    color: #282828;
+    font-family: "montserratlight";
+    font-size: 14px;
+    line-height: 20px;
+    padding-right: 50px;
+}
+.slider-content.slider-text-4{
+    margin-top: 20px;
+}
+.banner-image-wrap{
+    background-image: url(img/slider/1.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+}
+.banner-image-wrap.fixed-background{
+    background-image: url(img/slider/3.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+}
+.banner-image-wrap .banner-text{
+    left: 45%;
+    position: absolute;
+    top: 25%;
+    display: table;
+    height: 100%;
+}
+.banner-text-wrapper{
+    display: table-cell;
+    width: 100%;
+    height: 100%;
+}
+.banner-content.static-text {
+    left: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    z-index: 9;
+}
+.nivo-img img {
+    display: inline-block;
+    width: 62%;
+    left: 5%;
+    max-width: none;
+}
+.nivo_text {
+    left: 45%;
+    position: absolute;
+}
+.overlay{position: relative;}
+.overlay:after{
+    background: #170804;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    opacity: .6;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)"
+}
+#video-bg {width: 100%;}
+.video-wrapper, .video-banner {
+    height: 570px;
+    overflow: hidden;
+    position: relative;
+}
+.animated-background .slider-content.slider-text-1 h2, .animated-background .slider-content.slider-text-2 h1{color: #fff}
+.fixed-background {
+    background: rgba(0, 0, 0, 0) url("img/slider/1.jpg") no-repeat fixed center top / cover ;
+    padding: 250px 0;
+}
+.slider-button {
+    background: #282828 none repeat scroll 0 0;
+    border-bottom: medium none;
+    border-radius: 20px;
+    color: #ffffff;
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 8px 20px 6px;
+    text-transform: uppercase;
+    display: inline-block;
+    -webkit-transition: all 0.5s ease 0s;
+    transition: all 0.5s ease 0s;
+}
+.section-button {
+    background: #ec552c none repeat scroll 0 0;
+    border-bottom: medium none;
+    border-radius: 20px;
+    color: #ffffff;
+    display: inline-block;
+    font-family: "Montserrat",sans-serif;
+    font-size: 12.8px;
+    font-weight: 700;
+    padding: 7px 18px;
+    text-transform: uppercase;
+    border: none;
+    -webkit-transition: all 0.5s ease 0s;
+    transition: all 0.5s ease 0s;
+}
+.slider-button:hover {
+    color: #282828;
+    background: #EC552C;
+}
+.section-button:hover {
+    color: #282828;
+}
+/*----------------------------------------*/
+/*  5.  Slider Bottom CSS
+/*----------------------------------------*/
+.slider-bottom-area{overflow: hidden}
+.slider-bottom-area .row{margin-left: -21px; margin-right: -21px}
+.slider-bottom-area .row .col-md-3{padding: 0 6px}
+.service-area .row .col-md-3{padding: 0 5px}
+.single-slider-bottom{position: relative;}
+.single-slider-info{
+    position: absolute;
+    top: 33%;
+    left: 62%;
+    font-family: 'Poppins', sans-serif;
+    color: #282828;
+}
+.single-slider-info h4 {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 20px;
+    margin: 0;
+}
+.single-slider-info h2 {
+    color: #ec552c;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 30px;
+    margin: 0;
+}
 /*!*----------------------------------------*!*/
 /*!*   6.  Arrival CSS*/
 /*!*----------------------------------------*!*/
@@ -1443,6 +1443,7 @@ a.read-more.text-uppercase {
     margin: 0;
     padding: 0;
     list-style: none;
+
 }
 .social-icon ul li{
     display: inline-block;
@@ -1531,6 +1532,11 @@ a.read-more.text-uppercase {
 .footer-middle-area{
     background: #252525;
 }
+.social-icons ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
 .footer-widget h5 {
     color: #ec552c;
     font-family: "montserratsemi_bold";
@@ -1557,7 +1563,7 @@ a.read-more.text-uppercase {
 }
 .footer-icon {
     float: left;
-    margin-top: 5px;
+    /*margin-top: 5px;*/
     color: #ec552c;
     font-size: 20px;
 }

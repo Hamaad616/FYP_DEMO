@@ -9,12 +9,14 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5|^8.0",
+        "cartalyst/stripe-laravel": "11.*",
         "cviebrock/eloquent-sluggable": "^6.0",
         "fideloper/proxy": "^4.4",
         "laravel/framework": "^6.20",
         "laravel/tinker": "^2.5",
         "olimortimer/laravelshoppingcart": "^4.0",
-        "santigarcor/laratrust": "^6.3"
+        "santigarcor/laratrust": "^6.3",
+      "ext-mysql_xdevapi": "*"
     },
     "require-dev": {
         "facade/ignition": "^1.16.4",

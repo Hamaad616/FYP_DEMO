@@ -12,8 +12,11 @@ use App\SocialLink;
 use App\Variant;
 use App\VariantValue;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use http\Env\Response;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CartController extends Controller
 {
@@ -108,13 +111,34 @@ class CartController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $item
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param $id
+     * @return JsonResponse
      */
-    public function update(Request $item, $id)
+    public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'quantity' => 'required|numeric|between:1,5'
+        ]);
+
+        if ($validator->fails()) {
+            session()->flash('errors', collect(['Quantity must be between 1 and 5.']));
+            return response()->json(['success' => false], 400);
+        }
+//
+//        if ($request->quantity > $request->productQuantity) {
+//            session()->flash('errors', collect(['We currently do not have enough items in stock.']));
+//            return response()->json(['success' => false], 400);
+//        }
+//
+//        Cart::update($id, $request->quantity);
+//        session()->flash('success_message', 'Quantity was updated successfully!');
+//        return response()->json(['success' => true]);
+        Cart::update($id, $request->quantity);
+
+        session()->flash('success_message', 'Quantity was updated successfully');
+        return response()->json(['success'=>true]);
+
     }
 
     /**

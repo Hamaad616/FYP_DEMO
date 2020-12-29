@@ -96,6 +96,17 @@
             border-color: blue;
             outline: 0;
         }
+
+        /*a:hover {*/
+        /*    background-color: #ec552c;*/
+        /*    text-decoration: none;*/
+        /*    font-weight:0;*/
+        /*}*/
+
+        div{
+            font-family: Montserrat,serif
+        }
+
     </style>
 
 </head>
@@ -213,20 +224,28 @@
                             </li>
                             <li><a href="{{ url('contact') }}">Contact</a></li>
                             <li><a href="{{ url('video_show') }}">Video</a></li>
-                            <li><a href="{{ route('cart.index') }}">Cart <span class="cart-count">
-                                        @if (Cart::instance('default')->count() > 0)
-                                            <span class="cart-count">{{ Cart::instance('default')->count() }}</span></span>
-                                        @endif
-                                </a>
-                            </li>
+                            <li><a style="text-decoration:none"> {{ Auth::user()->name }} </a>
+                                <ul class="submenu-mainmenu">
+                                    <li>
+                                        <a href="{{ route('cart.index') }}">Cart
+                                            @if (Cart::instance('default')->count() > 0)
+                                                <span class="cart-count"><span>({{ Cart::instance('default')->count() }})</span></span>
+                                            @endif
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a  href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
 
+                                            <form id = "logout-form" action="{{ route('logout') }}" method="POST">
+                                                @csrf
+                                            </form>
+                                        </a>
 
-                            <li>
-                                <a href="#" >
-                                    {{ Auth::user()->name }}
-                                </a>
+                                    </li>
+                                </ul>
                             </li>
-                            <li>
                                 @if(Auth::user()->hasRole('Admin'))
                                     <a href="{{url('admin_index')}}" >
                                         Admin Panel
@@ -258,13 +277,13 @@
                                         <li><a href="{{ url('index_portal') }}">HOME</a>
 
                                         </li>
-                                        <li><a href="{{ url('customer_showproducts') }}">Categories</a>
+                                        <li><a href="{{ url('showproducts') }}">Categories</a>
                                             <ul>
-                                                <li><a href="{{ url('customer_showproducts') }}">Boxing Equipments</a></li>
-                                                <li><a href="{{ url('customer_showproducts') }}">Martial Arts</a></li>
-                                                <li><a href="{{ url('customer_showproducts') }}">Sports Wears</a></li>
-                                                <li><a href="{{ url('customer_showproducts') }}">Fitness</a></li>
-                                                <li><a href="{{ url('customer_showproducts') }}">bag</a></li>
+                                                <li><a href="{{ url('showproducts') }}">Boxing Equipments</a></li>
+                                                <li><a href="{{ url('showproducts') }}">Martial Arts</a></li>
+                                                <li><a href="{{ url('showproducts') }}">Sports Wears</a></li>
+                                                <li><a href="{{ url('showproducts') }}">Fitness</a></li>
+                                                <li><a href="{{ url('showproducts') }}">bag</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="#">New ARRIVIAL</a></li>
@@ -357,13 +376,13 @@
                                         </form>
                                     </div>
                                     <div>
-                                        <select class="arrows" data-id="{{ $item->rowId }}" data-productQuantity="{{ $item->model->quantity }}">
+                                        <select class="arrows quantity" data-id="{{ $item->rowId }}" data-productQuantity="{{ $item->quantity }}">
                                             @for ($i = 1; $i < 5 + 1 ; $i++)
                                                 <option {{ $item->qty == $i ? 'selected' : '' }}>{{ $i }}</option>
                                             @endfor
                                         </select>
                                     </div>
-                                    <div>${{ currentPrice($item->model->price) }}</div>
+                                    <div>${{ $item->subtotal}}</div>
                                 </div>
                             </div>
                         @endforeach
@@ -399,34 +418,36 @@
 
                                 Tax ({{config('cart.tax')}}%)<br>
                                 <span class="cart-totals-total">Total</span>
-
-                                <div class="cart-totals-subtotal">
-                                    {{ currentPrice(Cart::subtotal()) }} <br>
-                                    @if (session()->has('coupon'))
-                                        -{{ currentPrice($discount) }} <br>&nbsp;<br>
-                                        <hr>
-                                        {{ currentPrice($newSubtotal) }} <br>
-                                    @endif
-{{--                                    {{ currentPrice($newTax) }} <br>--}}
-{{--                                    <span class="cart-totals-total">{{ currentPrice($newTotal) }}</span>--}}
-                                </div>
+                            </div>
+                            <div class="cart-totals-subtotal">$
+                                {{ Cart::subtotal()}} <br>
+                                ${{Cart::tax()}}<br>
+                                <span class="cart-totals-total">${{Cart::total()}} </span>
+                                {{--                                    @if (session()->has('coupon'))--}}
+                                {{--                                        -{{ currentPrice($discount) }} <br>&nbsp;<br>--}}
+                                {{--                                        <hr>--}}
+                                {{--                                        {{ currentPrice($newSubtotal) }} <br>--}}
+                                {{--                                    @endif--}}
+                                {{--                                    {{ currentPrice($newTax) }} <br>--}}
+                                {{--                                    <span class="cart-totals-total">{{ currentPrice($newTotal) }}</span>--}}
                             </div>
                         </div>
+
                     </div>
 
                     <div class="cart-buttons">
                         <a href="{{ url('index_portal') }}" class="button">Continue Shopping</a>
-                        <a href="{{ url('checkout.index') }}" class="button-primary">Proceed to Checkout</a>
+                        <a href="{{route('checkout.index')}}" class="button-primary">Proceed to Checkout</a>
                     </div>
                 @else
-                    <h3>No items in Cart!</h3>
+                    <h1 class="font-weight-bold" style="font-size: large; font-family: Montserrat,serif">No items in Cart!</h1>
                     <div class="spacer"></div>
                     <a href="{{ url('index_portal') }}" class="button">Continue Shopping</a>
                     <div class="spacer"></div>
                     @endif
                 @if (Cart::instance('saveForLater')->count() > 0)
 
-                    <h2>{{ Cart::instance('saveForLater')->count() }} item(s) Saved For Later</h2>
+                    <h1 class="font-weight-bold" style="font-size: large; font-family: Montserrat,serif">{{ Cart::instance('saveForLater')->count() }} item(s) Saved For Later</h1>
 
                     <div class="saved-for-later cart-table">
 
@@ -462,124 +483,125 @@
                     </div><!-- end saved-for-later -->
         </div>
                 @else
-                    <h3>You have no items Saved for Later.</h3>
+                    <h1 class="font-weight-bold" style="font-size: large; font-family: Montserrat,serif">You have no item Saved for Later.</h1>
         @endif
         </div><!-- end cart-section -->
 
     </div>
 </div>
+    <br><br><br><br>
 
-        <!-- footer start -->
-        <div class="footer">
-            <div class="footer-middle-area ptb-60">
-                <div class="container">
-                    <div class="row" id="contactus">
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="footer-widget">
-                                <h5>Contact</h5>
-                                <div class="single-footer-contact">
-                                    <div class="footer-icon">
-                                        <i class="fa fa-map-marker"></i>
-                                    </div>
-                                    <div class="footer-contact-info">
-                                        <p>Croydon International</p>
-                                        <p>Brush Street, Small Industrial Estate, <br> Shahabpura, Sialkot.</p>
-                                    </div>
+    <!-- footer start -->
+        <div class="footer-middle-area ptb-60">
+            <div class="container">
+                <div class="row" id="contactus">
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="footer-widget">
+                            <h5>Contact</h5>
+                            <div class="single-footer-contact">
+                                <div class="footer-icon">
+                                    <i class="fa fa-map-marker"></i>
                                 </div>
-                                <div class="single-footer-contact">
-                                    <div class="footer-icon">
-                                        <i class="fa fa-phone"></i>
-                                    </div>
-                                    <div class="footer-contact-info">
-                                        <p>Telephone :   </p>
-
-                                    </div>
-                                </div>
-                                <div class="single-footer-contact">
-                                    <div class="footer-icon">
-                                        <i class="fa fa-globe"></i>
-                                    </div>
-                                    <div class="footer-contact-info">
-                                        <p>Email : <a href="#">info@croydon.com.pk</a></p>
-                                        <p>Facebook : <a href="https://www.facebook.com/Croydoninternational/">Croydon International</a></p>
-                                    </div>
+                                <div class="footer-contact-info">
+                                    <p>Croydon International</p>
+                                    <p>Brush Street, Small Industrial Estate, <br> Shahabpura, Sialkot.</p>
                                 </div>
                             </div>
-                        </div>
+                            <div class="single-footer-contact">
+                                <div class="footer-icon">
+                                    <i class="fa fa-phone"></i>
+                                </div>
+                                <div class="footer-contact-info">
+                                    <p>Telephone : {{$detail->phone}}  </p>
 
-                        <div class="col-md-3 hidden-sm col-xs-12">
-                            <div class="footer-widget">
-                                <h5>News & Events</h5>
-                                <div id="footernews">
-                                    <marquee id="MARK" direction="left">
-                                        @foreach($news as $new)
-                                            <a href="news_detail.php?N=4" class="news_link" onmouseover="MARK.stop();" onmouseout="MARK.start();">
-                                            {{ $new->news }}
-                                        @endforeach
-                                    </marquee>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-2 col-sm-3 col-xs-12">
-                            <div class="footer-widget">
-                                <h5>Company</h5>
-                                <ul>
-                                    <li><a href="{{url('/')}}"><i class="fa fa-circle"></i>Home</a></li>
-                                    <li><a href="{{url('customer_shop_grid')}}"><i class="fa fa-circle"></i>Categories</a></li>
-                                    <li><a href="{{url('customer_shop_grid')}}"><i class="fa fa-circle"></i>New Arrival</a></li>
-                                    <li><a href="{{url('customer_contact')}}"><i class="fa fa-circle"></i>Contact Us</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-2 col-sm-3 col-xs-12">
-                            <div class="footer-widget">
-                                <h5 class="text-center">social links</h5>
-                                <div class="social-icons ">
-                                    <ul>
-                                        @foreach($sociallink as $social)
-                                            <a href="{{$social->social_link}}" style="font-size: 40px;"><i class="fa fa-{{$social->name}}"></i></a>
-                                        @endforeach
-                                    </ul>
+                            <div class="single-footer-contact">
+                                <div class="footer-icon">
+                                    <i class="fa fa-globe"></i>
+                                </div>
+                                <div class="footer-contact-info">
+                                    <p>Email : <a href="#">info@croydon.com.pk</a></p>
+                                    <p>Facebook : <a href="https://www.facebook.com/Croydoninternational/">Croydon International</a></p>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-md-3 hidden-sm col-xs-12">
+                        <div class="footer-widget">
+                            <h5>News & Events</h5>
+                            <div id="footernews">
+                                <marquee id="MARK" direction="left">
+                                    @foreach($news as $new)
+                                        <a href="news_detail.php?N=4" class="news_link" onmouseover="MARK.stop();" onmouseout="MARK.start();">
+                                        {{ $new->news }}
+                                    @endforeach
+                                </marquee>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-3 col-xs-12">
+                        <div class="footer-widget">
+                            <h5>Company</h5>
+                            <ul>
+                                <li><a href="{{url('index_portal')}}"><i class="fa fa-circle"></i>Home</a></li>
+                                <li><a href="{{url('shop_grid')}}"><i class="fa fa-circle"></i>Categories</a></li>
+                                <li><a href="{{url('shop_grid')}}"><i class="fa fa-circle"></i>New Arrival</a></li>
+                                <li><a href="{{url('contact')}}"><i class="fa fa-circle"></i>Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2 col-sm-3 col-xs-12">
+                        <div class="footer-widget" >
+                            <h5>Social links</h5>
+                        <div class="social-icons text-center">
+                            <ul>
+                                @foreach($sociallink as $social)
+                                   <a href="{{$social->social_link}}" style=" font-size: 40px"><i class="fa fa-{{$social->name}}"></i></a>
+                                @endforeach
+                            </ul>
+                        </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-            <div class="footer-bottom-area ptb-25">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4 col-sm-6">
-                            <div class="copyright">
-                                <p>Copyright @ 2020 <span><a href="{{url('index_portal')}}">Croydon</a></span>. All right reserved. </p>
-                            </div>
+        </div>
+        <div class="footer-bottom-area ptb-25">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                        <div class="copyright">
+                            <p>Copyright @ 2020 <span><a href="{{url('index_portal')}}">Croydon</a></span>. All right reserved. </p>
                         </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="footer-menu text-center">
-                                <nav>
-                                    <ul>
-                                        <li><a href="{{url('index_portal')}}">Home</a></li>
-                                        <li><a href="{{url('contact')}}">Contact Us</a></li>
-                                        <li class="hidden-md hidden-xs"><a href="{{url('video_show')}}">Video</a></li>
-                                        <!--<li><a href="#">Newsletter</a></li>-->
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                        <!--<div class="col-md-4 hidden-sm">
-                            <div class="payment text-right">
-                                <img src="img/payment/1.png" alt="">
-                            </div>
-                        </div>-->
                     </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="footer-menu text-center">
+                            <nav>
+                                <ul>
+                                    <li><a href="{{url('index_portal')}}">Home</a></li>
+                                    <li><a href="{{url('contact')}}">Contact Us</a></li>
+                                    <li class="hidden-md hidden-xs"><a href="{{url('video_show')}}">Video</a></li>
+                                    <!--<li><a href="#">Newsletter</a></li>-->
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-4 hidden-sm">
+                        <div class="payment text-right">
+                            <img src="img/payment/1.png" alt="">
+                        </div>
+                    </div>-->
                 </div>
             </div>
         </div>
 
-        <!-- footer end -->
+    <!-- footer end -->
 
-    </div>
 </div>
+
 
 
 <!-- END QUICKVIEW PRODUCT -->
@@ -655,8 +677,7 @@
     });
 </script>
 
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
@@ -666,22 +687,19 @@
         (function(){
             const classname = document.querySelectorAll('.quantity')
 
-            Array.from(classname).forEach(function(element) {
-                element.addEventListener('change', function() {
-                    const id= element.getAttribute('data-id')
-                    const productQuantity = element.getAttribute('data-productQuantity')
+            Array.from(classname).forEach(function (element) {
+                element.addEventListener('change', function (){
 
+                    const id = element.getAttribute('data-id')
                     axios.patch(`/cart/${id}`, {
-                        quantity: this.value,
-                        productQuantity: productQuantity
+                        quantity :this.value
                     })
                         .then(function (response) {
                             // console.log(response);
-                            window.location.href = '{{ route('cart.index') }}'
+                            window.location.href = "{{route('cart.index')}}"
                         })
                         .catch(function (error) {
-                            // console.log(error);
-                            window.location.href = '{{ route('cart.index') }}'
+                            console.log(error);
                         });
                 })
             })

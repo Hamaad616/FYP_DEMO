@@ -6,10 +6,6 @@
     <title>Croydon</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Croydonicon
     ============================================ -->
     <link rel="shortcut icon" type="image/x-icon" href="portal/img/logo-icon.png">
@@ -170,7 +166,7 @@
                             <li><a href="{{ url('shop_grid') }}">Categories <span><img src="portal/img/icon/hot.png" alt=""></span></a>
                                 <ul class="submenu-mainmenu">
                                     @foreach($categories as $category)
-                                        <li><a  href="{{ url('shop_grid') }}"><i class="fa fa-circle"></i>{{$category->name}}<span><i class="fa fa-angle-right"></i></span></a>
+                                        <li><a  href="{{ url('shop_grid') }}"></i>{{$category->name}}<span><i class="fa fa-angle-right"></i></span></a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -181,24 +177,30 @@
                             <li><a href="{{ url('contact') }}">Contact</a></li>
                             <li><a href="{{ url('video_show') }}">Video</a></li>
                             <li>
-                            {{--                            <a href="{{ route('cart.index') }}">Cart--}}
-                            {{--                                    @if (Cart::instance('default')->count() > 0)--}}
-                            {{--                                        <span class="cart-count"><span>{{ Cart::instance('default')->count() }}</span></span>--}}
-                            {{--                                    @endif--}}
-                            {{--                                </a></li>--}}
+                            <li><a> {{ Auth::user()->name }} </a>
+                                <ul class="submenu-mainmenu">
+                                    <li>
+                                        <a href="{{ route('cart.index') }}">Cart
+                                            @if (Cart::instance('default')->count() > 0)
+                                                <span class="cart-count"><span>({{ Cart::instance('default')->count() }})</span></span>
+                                            @endif
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a  href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
 
-                            <li class="fas fa-shopping-cart" >
-                                <a href="{{ route('cart.index') }}" style="font-size: 25px"><span ID="lblCartCount" CssClass="badge badge-warning" >@if (Cart::instance('default')->count() > 0)
-                                            <span class="cart-count">{{ Cart::instance('default')->count() }}</span>
-                                        @endif</span>
-                                </a>
-                            </li>
-                            {{--                            <li><a href="{{ route('login') }}">Login</a></li>--}}
+                                            <form id = "logout-form" action="{{ route('logout') }}" method="POST">
+                                                @csrf
+                                            </form>
+                                        </a>
 
-                            <li>
-                                <a href="#" >
-                                    {{ Auth::user()->name }}
-                                </a>
+                                    </li>
+                                    <li >
+                                        <a href="">My Profile</a>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
                                 @if(Auth::user()->hasRole('Admin'))
@@ -206,15 +208,6 @@
                                         Admin Panel
                                     </a>
                                 @endif
-                            </li>
-                            <li>
-                                <a  href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-                                <form id = "logout-form" action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                </form>
                             </li>
                         </ul>
                     </div>
@@ -232,13 +225,13 @@
                                         <li><a href="{{ url('index_portal') }}">HOME</a>
 
                                         </li>
-                                        <li><a href="{{ url('customer_showproducts') }}">Categories</a>
+                                        <li><a href="{{ url('showproducts') }}">Categories</a>
                                             <ul>
-                                                <li><a href="{{ url('customer_showproducts') }}">Boxing Equipments</a></li>
-                                                <li><a href="{{ url('customer_showproducts') }}">Martial Arts</a></li>
-                                                <li><a href="{{ url('customer_showproducts') }}">Sports Wears</a></li>
-                                                <li><a href="{{ url('customer_showproducts') }}">Fitness</a></li>
-                                                <li><a href="{{ url('customer_showproducts') }}">bag</a></li>
+                                                <li><a href="{{ url('showproducts') }}">Boxing Equipments</a></li>
+                                                <li><a href="{{ url('showproducts') }}">Martial Arts</a></li>
+                                                <li><a href="{{ url('showproducts') }}">Sports Wears</a></li>
+                                                <li><a href="{{ url('showproducts') }}">Fitness</a></li>
+                                                <li><a href="{{ url('showproducts') }}">bag</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="#">New ARRIVIAL</a></li>
@@ -806,10 +799,10 @@
                             <div class="footer-widget">
                                 <h5>Company</h5>
                                 <ul>
-                                    <li><a href="{{url('/')}}"><i class="fa fa-circle"></i>Home</a></li>
-                                    <li><a href="{{url('customer_shop_grid')}}"><i class="fa fa-circle"></i>Categories</a></li>
-                                    <li><a href="{{url('customer_shop_grid')}}"><i class="fa fa-circle"></i>New Arrival</a></li>
-                                    <li><a href="{{url('customer_contact')}}"><i class="fa fa-circle"></i>Contact Us</a></li>
+                                    <li><a href="{{url('index_portal')}}"><i class="fa fa-circle"></i>Home</a></li>
+                                    <li><a href="{{url('shop_grid')}}"><i class="fa fa-circle"></i>Categories</a></li>
+                                    <li><a href="{{url('shop_grid')}}"><i class="fa fa-circle"></i>New Arrival</a></li>
+                                    <li><a href="{{url('contact')}}"><i class="fa fa-circle"></i>Contact Us</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -920,10 +913,6 @@
 ============================================ -->
 <script src="{{ asset('portal/js/main.js')}}"></script>
 <script src="{{ asset('portal/assets/js/jquery-1.9.1.min.js')}}"></script>
-
-
-
-
 
 
 <script type="text/javascript">

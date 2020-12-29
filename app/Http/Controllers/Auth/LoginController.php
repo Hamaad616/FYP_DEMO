@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Category;
 use App\Http\Controllers\Controller;
+use App\News;
+use App\PersonalDetail;
 use App\Providers\RouteServiceProvider;
+use App\SocialLink;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\RedirectResponse;
@@ -45,7 +49,7 @@ class LoginController extends Controller
         }
 
         if ( $user->hasRole('CEO') ){
-            return redirect('/dashboard');
+            return redirect('/CEO_web');
         }
     }
 
@@ -53,6 +57,7 @@ class LoginController extends Controller
         Auth::logout();
         return redirect('/login');
     }
+
 
     /**
      * Create a new controller instance.
