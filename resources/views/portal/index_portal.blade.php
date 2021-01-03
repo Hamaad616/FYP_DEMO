@@ -177,7 +177,7 @@
                             <li><a href="{{ url('contact') }}">Contact</a></li>
                             <li><a href="{{ url('video_show') }}">Video</a></li>
                             <li>
-                            <li><a> {{ Auth::user()->name }} </a>
+                            <li><a href=""> {{ Auth::user()->name }} </a>
                                 <ul class="submenu-mainmenu">
                                     <li>
                                         <a href="{{ route('cart.index') }}">Cart
@@ -198,7 +198,7 @@
 
                                     </li>
                                     <li >
-                                        <a href="">My Profile</a>
+                                        <a href="{{route('users.edit')}}">My Profile</a>
                                     </li>
                                 </ul>
                             </li>
@@ -206,6 +206,14 @@
                                 @if(Auth::user()->hasRole('Admin'))
                                     <a href="{{url('admin_index')}}" >
                                         Admin Panel
+                                    </a>
+                                @endif
+                            </li>
+
+                            <li>
+                                @if(Auth::user()->hasRole('CEO'))
+                                    <a href="{{url('/CEO')}}" >
+                                        CEO DASHBOARD
                                     </a>
                                 @endif
                             </li>

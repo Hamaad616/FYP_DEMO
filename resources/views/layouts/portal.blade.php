@@ -174,7 +174,7 @@
                             <li><a href="{{ url('shop_grid') }}">Categories <span><img src="portal/img/icon/hot.png" alt=""></span></a>
                                 <ul class="submenu-mainmenu">
                                     @foreach($categories as $category)
-                                        <li><a  href="{{ url('shop_grid') }}"><i class="fa fa-circle"></i>{{$category->name}}<i class="fa fa-angle-right"></i><span></a>
+                                        <li><a  href="{{ url('shop_grid') }}"><i class="fa fa-circle"></i>{{$category->name}}<span><i class="fa fa-angle-right"></i></span></a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -241,10 +241,6 @@
                     </div>
                 </li>
 -->
-
-
-
-                        </ul>
                     </div>
                 </nav>
             </div>

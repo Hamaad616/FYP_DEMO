@@ -17,6 +17,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Coupon;
 
 class CartController extends Controller
 {
@@ -45,14 +46,19 @@ class CartController extends Controller
 
     public function index()
     {
-//        dd(Cart::content());
+//        dd(Cart::content(), getNumbers()->get('discount'),getNumbers()->get('newSubtotal'),getNumbers()->get('newTax'),getNumbers()->get('newTotal'));
         $news = News::all();
         $categories = Category::all();
         $detail = PersonalDetail::first();
         $products = Product::all();
         $images = Image::all();
         $sociallink =SocialLink::all();
-        return view('portal.cart', compact(['images','sociallink','detail','categories','products', 'news']));
+        return view('portal.cart', compact(['images','sociallink','detail','categories','products', 'news']))->with([
+            'discount' => getNumbers()->get('discount'),
+            'newSubtotal' => getNumbers()->get('newSubtotal'),
+            'newTax' => getNumbers()->get('newTax'),
+            'newTotal' => getNumbers()->get('newTotal')
+        ]);
     }
     /**
      * Show the form for creating a new resource.
@@ -125,19 +131,16 @@ class CartController extends Controller
             session()->flash('errors', collect(['Quantity must be between 1 and 5.']));
             return response()->json(['success' => false], 400);
         }
-//
-//        if ($request->quantity > $request->productQuantity) {
-//            session()->flash('errors', collect(['We currently do not have enough items in stock.']));
-//            return response()->json(['success' => false], 400);
-//        }
-//
-//        Cart::update($id, $request->quantity);
-//        session()->flash('success_message', 'Quantity was updated successfully!');
-//        return response()->json(['success' => true]);
+
+        if ($request->quantity > $request->productQuantity) {
+            session()->flash('errors', collect(['We currently do not have enough items in stock.']));
+            return response()->json(['success' => false], 400);
+        }
+
         Cart::update($id, $request->quantity);
 
-        session()->flash('success_message', 'Quantity was updated successfully');
-        return response()->json(['success'=>true]);
+        session()->flash('success_message', 'Quantity was updated successfully!');
+        return response()->json(['success' => true]);
 
     }
 

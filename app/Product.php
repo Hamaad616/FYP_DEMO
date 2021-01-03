@@ -12,6 +12,8 @@ class Product extends Model
 	use Sluggable;
     use SluggableScopeHelpers;
 
+    protected $fillable = ['quantity'];
+
 		public function sluggable()
     {
         return [

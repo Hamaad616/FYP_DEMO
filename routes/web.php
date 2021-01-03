@@ -213,6 +213,9 @@ Route::post('/cart/switchToCart/{id}', 'SaveForLaterController@switchToCart')->n
 Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
 Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');
 
+Route::post('/coupons', 'CouponsController@store')->name('coupon.store');
+Route::delete('/checkout', 'CouponsController@destroy')->name('coupon.destroy');
+
 Route::patch('/cart/{product}', 'CartController@update')->name('cart.update');
 
 Route::get('/thankyou', 'ConfirmationController@index')->name('confirmation.index');
@@ -269,6 +272,16 @@ Route::get('add_employee_role', 'DashboardController@add_employee_role');
 Route::get('test', 'DashboardController@test');
 
 Route::post('admin', 'DashboardController@postDashLogin');
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('/my-profile', 'UsersController@edit')->name('users.edit');
+    Route::patch('/my-profile', 'UsersController@update')->name('users.update');
+
+    Route::get('/my-orders', 'OrdersController@index')->name('orders.index');
+    Route::get('/my-orders/{id}', 'OrdersController@show')->name('orders.show');
+});
+
 
 //Route::get('', 'DashboardController@dasloginpage');
 

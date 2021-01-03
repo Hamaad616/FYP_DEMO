@@ -40,8 +40,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function role(): void
+    public function role(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        $this->belongsToMany(Role::class);
+        return $this->belongsToMany(Role::class);
+    }
+    public function orders(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany('App\Order');
     }
 }

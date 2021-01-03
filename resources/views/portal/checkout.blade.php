@@ -235,7 +235,7 @@
                             </li>
                             <li><a href="{{ url('contact') }}">Contact</a></li>
                             <li><a href="{{ url('video_show') }}">Video</a></li>
-                            <li><a> {{ Auth::user()->name }} </a>
+                            <li><a href=""> {{ Auth::user()->name }} </a>
                                 <ul class="submenu-mainmenu">
                                     <li>
                                         <a href="{{ route('cart.index') }}">Cart
@@ -255,7 +255,25 @@
                                         </a>
 
                                     </li>
+                                    <li >
+                                        <a href="{{route('users.edit')}}">My Profile</a>
+                                    </li>
                                 </ul>
+                            </li>
+                            <li>
+                                @if(Auth::user()->hasRole('Admin'))
+                                    <a href="{{url('admin_index')}}" >
+                                        Admin Panel
+                                    </a>
+                                @endif
+                            </li>
+
+                            <li>
+                                @if(Auth::user()->hasRole('CEO'))
+                                    <a href="{{url('/CEO')}}" >
+                                        CEO DASHBOARD
+                                    </a>
+                                @endif
                             </li>
                         </ul>
                     </div>
@@ -525,21 +543,16 @@
                                 <div class="checkout-table-row">
                                     <div class="checkout-table-row-left">
                                         <img src="{{ asset('uploads/' .$item->model->slug.'/'. $item->model->product_image)}}" alt="item" class="checkout-table-img">
-                                        <div class="checkout-item-details" style="margin-left: 15px">
-                                            <div class="checkout-table-item" style="font-size: 16px; font-weight: bold">{{ $item->name }}</div>
-                                            <div class="checkout-table-description" style=" font-size: 15px">{{ $item->model->description }}</div>
-
+                                        <div class="checkout-item-details">
+                                            <div class="checkout-table-item">{{ $item->name }}</div>
+                                            <div class="checkout-table-description">{{ $item->model->description }}</div>
+                                            <div class="checkout-table-price">Price ${{ $item->model->price }}</div>
                                         </div>
                                     </div> <!-- end checkout-table -->
 
                                     <div class="checkout-table-row-right">
-                                          <div class="checkout-table-quantity">{{ $item->qty }}</div>
+                                        <div class="checkout-table-quantity">{{ $item->qty }}</div>
                                     </div>
-
-                                    <div class="checkout-table-row-right">
-                                        <div class="checkout-table-price" style="font-size: 16px; font-weight: bold">${{ $item->model->price }}</div>
-                                    </div>
-
                                 </div> <!-- end checkout-table-row -->
                             @endforeach
 
@@ -558,16 +571,13 @@
                             </div>
                             <div class="checkout-totals-right">
                                 ${{ (Cart::subtotal()) }} <br>
-{{--                                {{Cart::discount()}}<br>--}}
-                                ${{Cart::tax()}}<br>
-                                <span class="checkout-totals-total ">${{Cart::total()}}</span>
-                                {{--@if (session()->has('coupon'))
-                                    -{{ presentPrice($discount) }} <br>
+                                @if (session()->has('coupon'))
+                                    -${{ $discount }} <br>
                                     <hr>
-                                    {{ presentPrice($newSubtotal) }} <br>
+                                    ${{ ($newSubtotal) }} <br>
                                 @endif
-                                {{ presentPrice($newTax) }} <br>
-                                <span class="checkout-totals-total">{{ ($newTotal) }}</span>--}}
+                                ${{ ($newTax) }} <br>
+                                <span class="checkout-totals-total">${{ ($newTotal) }}</span>
                             </div>
                         </div>
                     </div>

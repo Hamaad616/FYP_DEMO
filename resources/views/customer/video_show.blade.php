@@ -190,6 +190,7 @@
 
                                     <li><a href="{{ url('customer_contact') }}">Contact</a></li>
                                     <li><a href="{{ url('customer_video_show') }}">Video</a></li>
+                                    <li><a href="{{ url('customer_video_show') }}">Login</a></li>
 
                                     <!-- <li><a href="{{ url('admin_index') }}">Admin Panel</a></li>
 

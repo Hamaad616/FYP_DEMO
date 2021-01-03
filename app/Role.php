@@ -8,8 +8,8 @@ class Role extends LaratrustRole
 {
 
 
-    public function role(): void
+    public function role(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        $this->belongsToMany(User::class);
+       return  $this->belongsToMany(User::class);
     }
 }
